@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Restaurent finder</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h3 align=center>Welcome to Restaurant finder</h3>
+        <script>
+        if(navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition((pos)=>{
+                var lat=pos.coords.latitude;
+                var long=pos.coords.longitude;
+                console.log(lat+" "+long)
+                $.post('/getData',{lati:lat,longi:long},function(result){
+                    console.log(result);
+                })
+            })
+        }
+        
+        </script>
+    </body>
+</html>
